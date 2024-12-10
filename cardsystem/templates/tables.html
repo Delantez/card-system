@@ -1,0 +1,74 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+
+{% block maincontent %}
+    <main class="d-flex w-100">
+        <div class="col-12 col-lg-9 col-xxl-10 d-flex">
+
+        {% if item_type == 'contact' %}
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Available Contacts</h5>
+                </div>
+                <table class="table table-hover my-0">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+
+            {% elif item_type == 'identity' %}
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Available ID's</h5>
+                </div>
+                <table class="table table-hover my-0">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>ID-No</th>
+                            <th>Position</th>
+                            <th>Expiry Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            {% elif item_type == 'flyer' %}
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Available Flyers</h5>
+                </div>
+                <table class="table table-hover my-0">
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            {% endif %}
+
+        </div>
+    </main>
+{% endblock %}

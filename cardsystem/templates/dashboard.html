@@ -1,0 +1,68 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+
+{% block maincontent %}
+<main class="content">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+    </head>
+
+    <div class="container-fluid p-0">
+        <div class="row">
+            <!-- Add Item Card -->
+            <div class="col-md-4">
+                <div class="card custom-card">
+                    <a href="{% url 'add_item_form' item_type=item_type %}" class="text-decoration-none">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-2 mb-4">
+                                    <h3>
+                                        Add 
+                                        {% if item_type == 'contact' %} Contact
+                                        {% elif item_type == 'flyer' %} Flyer
+                                        {% elif item_type == 'identity' %} Identity Card
+                                        {% endif %}
+                                    </h3>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="stat text-primary">
+                                        <i class="align-middle" data-feather="plus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+
+            <!-- View Item Card -->
+            <div class="col-md-4">
+                <div class="card custom-card">
+                    <a href="{% url 'view_item_table' item_type=item_type %}" class="text-decoration-none">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col mt-2 mb-4">
+                                <h3>
+                                    View 
+                                    {% if item_type == 'contact' %} Contacts
+                                    {% elif item_type == 'flyer' %} Flyers
+                                    {% elif item_type == 'identity' %} Identity Cards
+                                    {% endif %}
+                                </h3>
+                            </div>
+                            <div class="col-auto">
+                                <div class="stat text-primary">
+                                    <i class="align-middle" data-feather="file"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock %}
