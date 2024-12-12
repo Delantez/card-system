@@ -1,0 +1,29 @@
+{% extends 'sidebar.html' %}
+{% load static %}
+
+{% block maincontent %}
+<main class="d-flex w-100 justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-md-8 col-xl-6">
+        <div class="card mb-3">
+            <hr class="my-0" />
+            <div class="card-body">
+                <h5 class="h6 card-title">Flyer</h5>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-1"><span data-feather="briefcase" class="feather-sm me-1"></span> Name <a href="#">GitHub</a></li>
+                    <li class="mb-1"><span data-feather="file-text" class="feather-sm me-1"></span> Flyer <a href="#">San Francisco, SA</a></li>
+                    <li class="mb-1"><span data-feather="calendar" class="feather-sm me-1"></span> Latest Update <a href="#">Boston</a></li>
+                </ul>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body text-center">
+                <button class="btn btn-success" disabled>
+                    <span data-feather="download" class="feather-sm me-1"></span>Download QR
+                </button>
+                <button class="btn btn-info" disabled>
+                    <span data-feather="edit" class="feather-sm me-1"></span>Edit
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

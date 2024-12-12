@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,9 +39,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Authentication and API
     'rest_framework',
+    'djoser',
+
+    # Apps
     'client',
 ]
+
+REST_FRAMEWORK = {
+            'DEFAULT_AUTHENTICATION_CLASSES': (
+                'rest_framework_simplejwt.authentication.JWTAuthentication',
+            ),
+        }
+
+SIMPLE_JWT = {
+            'AUTH_HEADER_TYPES': ('JWT',),
+            'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+            'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+        }
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'client.serializers.CustomUserCreateSerializer',
+    },
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,3 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Media files configuration (if needed)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Loging out
+LOGOUT_REDIRECT_URL = '/'

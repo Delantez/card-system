@@ -1,7 +1,12 @@
-from django.shortcuts import render
-from rest_framework import viewsets
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.contrib.auth import authenticate
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
+
 def home_view(request):
     return render(request, 'index.html')  
 
@@ -38,5 +43,29 @@ def view_item_table(request, item_type):
 def tables(request):
     return render(request, 'tables.html')  
 
-def details(request):
-    return render(request, 'details.html') 
+def contact(request):
+    return render(request, 'contact.html') 
+
+def identity(request):
+    return render(request, 'identity.html') 
+
+def flyer(request):
+    return render(request, 'flyer.html') 
+
+
+
+# Login Authentication  
+
+@api_view(['POST'])
+def jwt_login_view(request):
+    username = request.data.get("company_name")
+    password = request.data.get("password")
+
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        refresh = RefreshToken.for_user(user)
+        return JsonResponse({
+            'access': str(refresh.access_token),
+            'refresh': str(refresh),
+        })
+    return Response({"error": "Invalid credentials"}, status=400)
