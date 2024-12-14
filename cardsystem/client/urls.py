@@ -1,8 +1,19 @@
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView
+from rest_framework.routers import DefaultRouter
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import *
 
+#Routers for API endpoints
+router = DefaultRouter()
+router.register(r'contacts', ContactViewSet)
+router.register(r'identities', IdentityViewSet)
+router.register(r'flyers', FlyerViewSet)
+
+
 urlpatterns = [
+path('api/', include(router.urls)),
 path('home_view/', home_view, name='home_view'),
 path('', login_view, name='login_view'),
 path('sign_up/', sign_up_view, name='sign_up_view'),

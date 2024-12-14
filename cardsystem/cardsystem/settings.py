@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Sites frmaework
+    'django.contrib.sites',
+
     # Authentication and API
     'rest_framework',
     'djoser',
@@ -47,6 +50,10 @@ INSTALLED_APPS = [
     # Apps
     'client',
 ]
+
+# Adding site
+SITE_ID = 1
+
 
 REST_FRAMEWORK = {
             'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -56,7 +63,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
             'AUTH_HEADER_TYPES': ('JWT',),
-            'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+            'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
             'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
         }
 

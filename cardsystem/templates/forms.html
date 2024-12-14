@@ -53,21 +53,18 @@
                 
                                                     <div class="row">
                                                         <div class="col-md-6 mb-3">
-                                                            <label class="form-label">Organization</label>
-                                                            <input class="form-control form-control-lg" type="text" name="organization" placeholder="Enter your organization name" />
-                                                        </div>
-                
-                                                        <div class="col-md-6 mb-3">
                                                             <label class="form-label">Job</label>
                                                             <input class="form-control form-control-lg" type="text" name="job" placeholder="Enter your job title" />
                                                         </div>
-                                                    </div>
-                
-                                                    <div class="row">
+
                                                         <div class="col-md-6 mb-3">
                                                             <label class="form-label">Address</label>
                                                             <input class="form-control form-control-lg" type="text" name="address" placeholder="Enter your address" />
                                                         </div>
+                                                    </div>
+                
+                                                    <div class="row">
+                                                        
                 
                                                         <div class="col-md-6 mb-3">
                                                             <label class="form-label">Country</label>
@@ -79,7 +76,7 @@
                                                         <a href="index.html" class="btn btn-lg btn-primary">Add Contact</a>
                                                     </div>
                                                 </form>
-                                            
+                                                <script src="{% static 'js/contact.js' %}"></script>
                             
                                 {% elif item_type == 'flyer' %}
                                     <!-- Flyer Form -->
@@ -111,6 +108,8 @@
                                             <button type="submit" class="btn btn-lg btn-primary">Add Flyer</button>
                                         </div>
                                     </form>
+                                    <script src="{% static 'js/flyer.js' %}"></script>
+
                                 {% elif item_type == 'identity' %}
                                     <!-- Identity Form -->
                                     <form>
@@ -164,6 +163,7 @@
                                             <button type="submit" class="btn btn-lg btn-primary">Add ID</button>
                                         </div>
                                     </form>
+                                    <script src="{% static 'js/identity.js' %}"></script>
                                 {% endif %}
                             </div>
                         </div>
@@ -172,5 +172,10 @@
 
         </div>
     </div>
+
+    <script src="{% static 'css/contact.css' %}"></script>
+
+
 </main>
+
 {% endblock %}
