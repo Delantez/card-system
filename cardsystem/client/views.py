@@ -12,11 +12,13 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.generics import RetrieveUpdateAPIView
 import qrcode
 from io import BytesIO
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
 # Login Authentication  
 
+@csrf_exempt
 @api_view(['POST'])
 def jwt_login_view(request):
     username = request.data.get("company_name")
@@ -165,7 +167,6 @@ def generate_flyer_qr(request, flyer_id):
 class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()  # Explicitly define the queryset
     serializer_class = ContactSerializer
-    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Contact.objects.filter(user=self.request.user)

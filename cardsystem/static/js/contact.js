@@ -89,11 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
+            console.log(`Bearer ${localStorage.getItem("token")}`); 
             const response = await fetch("http://127.0.0.1:8080/api/contacts/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`, // Add your authentication token
+                    Authorization: `Bearer ${localStorage.getItem("token")}`, 
                 },
                 body: JSON.stringify(formData),
             });
@@ -105,6 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, 3000); // Redirect after 3 seconds
             } else {
                 const errorData = await response.json();
+                console.log(localStorage.getItem("token")); // Check if the token is correctly saved
                 console.error("Error:", errorData);
                 showMessageCard("Failed to add contact. Please try again.", false);
             }
